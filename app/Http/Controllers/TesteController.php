@@ -12,6 +12,8 @@ class TesteController extends Controller
         //     'x' => $p1,
         //     'y' => $p2
         // ]);
-        return view('teste', compact('p1', 'p2'));
+        // return view('teste', compact('p1', 'p2'));
+
+        return view('teste')->with('p1', $p1)->with('p2', $p2);
     }
 }
