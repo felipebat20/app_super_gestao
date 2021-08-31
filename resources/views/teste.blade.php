@@ -7,7 +7,7 @@
   <title>Mysql > Postgres</title>
 </head>
 <body>
-  <h1>Primeiro parâmetro: {{ $x }}</h1>
-  <p>Segundo parâmetro:  {{ $y }}</p>
+  <h1>Primeiro parâmetro: {{ $p1 }}</h1>
+  <p>Segundo parâmetro:  {{ $p2 }}</p>
 </body>
 </html>
