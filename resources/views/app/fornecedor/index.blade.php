@@ -5,12 +5,16 @@
 {!! '<h2>Teste de texto</h2>' !!}
 <?= '<h1>Teste de texto</h1>' ?>
 
+
 {{-- @dd($fornecedores) --}}
 
-@if (count($fornecedores) > 0 && count($fornecedores) < 10)
-  <h3>Existem alguns fornecedores cadastrados</h3>
-@elseif (count($fornecedores) > 10)
-  <h3>Existem muitos fornecedores cadastrados<h3>
-@else
-  <h3>Ainda não existem fornecedores cadastrados</h3>
+Fornecedor: {{ $fornecedores[0]['name'] }}
+<br/>
+Status: {{ $fornecedores[0]['status'] }}
+@if (! ($fornecedores[0]['status'] === 'S'))
+  <p>Fornecedor inativo</p>
 @endif
+
+@unless ($fornecedores[0]['status'] === 'S')
+  <p>Fornecedor inativo</p>
+@endunless
