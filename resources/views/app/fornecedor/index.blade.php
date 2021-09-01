@@ -7,14 +7,12 @@
 
 
 {{-- @dd($fornecedores) --}}
-
-Fornecedor: {{ $fornecedores[0]['name'] }}
-<br/>
-Status: {{ $fornecedores[0]['status'] }}
-@if (! ($fornecedores[0]['status'] === 'S'))
-  <p>Fornecedor inativo</p>
-@endif
-
-@unless ($fornecedores[0]['status'] === 'S')
-  <p>Fornecedor inativo</p>
-@endunless
+@isset($fornecedores)
+  Fornecedor: {{ $fornecedores[1]['name'] }}
+  <br/>
+  Status: {{ $fornecedores[1]['status'] }}
+  <br>
+  @isset($fornecedores[1]['cnpj'])
+    CNPJ: {{ $fornecedores[1]['cnpj'] }}
+  @endisset
+@endisset
