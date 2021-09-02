@@ -8,25 +8,16 @@
 
 {{-- @dd($fornecedores) --}}
 @isset($fornecedores)
-  Fornecedor: {{ $fornecedores[1]['name'] }}
-  <br/>
-  Status: {{ $fornecedores[1]['status'] }}
+  @for ($i = 0; isset($fornecedores[$i]); $i++ )
   <br>
-  CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido' }}
-  <br>
-  Telefone: {{ $fornecedores[1]['ddd'] ?? '' }} {{ $fornecedores[1]['telefone'] }}
-
-  @switch($fornecedores[1]['ddd'])
-    @case('11')
-      São paulo - SP
-      @break
-    @case('32')
-      Juiz de Fora - MG
-    @break
-    @case('85')
-      Fortaleza - CE
-    @break
-    @default
-      Estado não identificado
-  @endswitch
+    Fornecedor: {{ $fornecedores[$i]['name'] }}
+    <br/>
+    Status: {{ $fornecedores[$i]['status'] }}
+    <br>
+    CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+    <br>
+    Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} {{ $fornecedores[$i]['telefone'] }}
+    <br><br>
+    <hr>
+  @endfor
 @endisset
