@@ -8,14 +8,25 @@
 
 {{-- @dd($fornecedores) --}}
 @isset($fornecedores)
-  Fornecedor: {{ $fornecedores[0]['name'] }}
+  Fornecedor: {{ $fornecedores[1]['name'] }}
   <br/>
-  Status: {{ $fornecedores[0]['status'] }}
+  Status: {{ $fornecedores[1]['status'] }}
   <br>
   CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido' }}
+  <br>
+  Telefone: {{ $fornecedores[1]['ddd'] ?? '' }} {{ $fornecedores[1]['telefone'] }}
 
-  {{--
-    Só vai entrar na condição se a variável não estiver setada isset()
-    Caso o valor da variável seja null
-  --}}
+  @switch($fornecedores[1]['ddd'])
+    @case('11')
+      São paulo - SP
+      @break
+    @case('32')
+      Juiz de Fora - MG
+    @break
+    @case('85')
+      Fortaleza - CE
+    @break
+    @default
+      Estado não identificado
+  @endswitch
 @endisset
