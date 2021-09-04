@@ -9,6 +9,6 @@
     </head>
 
     <body>
-        @yield('container')
+        @include('site.partials.header')
     </body>
 </html>
