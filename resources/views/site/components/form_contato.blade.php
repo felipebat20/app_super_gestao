@@ -15,5 +15,6 @@
     <br>
     <textarea name="feedback" class="borda-preta">Preencha aqui a sua mensagem</textarea>
     <br>
+    {{ $slot }}
     <button type="submit" class="borda-preta">ENVIAR</button>
 </form>

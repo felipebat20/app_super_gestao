@@ -11,7 +11,9 @@
         <div class="informacao-pagina">
             <div class="contato-principal">
                 @component('site.components.form_contato')
-                    
+                    <p>Passando conteúdo html para o component form contato</p>
+                    <p>Isso foi possível ao utilizarmos a variavel $slot dentro do component.</p>
+                    <p>Não há nada que não possa aprender, desde que apenas comece a ler, praticar, ver videos e ensinar.</p>
                 @endcomponent
             </div>
         </div>
