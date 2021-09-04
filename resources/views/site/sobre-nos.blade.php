@@ -3,7 +3,6 @@
 @section('title', 'Sobre nós')
 
 @section('container')
-    @include('site.partials.header')
     <div class="conteudo-pagina">
         <div class="titulo-pagina">
             <h1>Olá, eu sou o Super Gestão</h1>

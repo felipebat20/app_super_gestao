@@ -10,5 +10,6 @@
 
     <body>
         @include('site.partials.header')
+        @yield('container')
     </body>
 </html>
