@@ -18,9 +18,9 @@ class CreateProdutoDetalhesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('produto_id');
-            $table->float('comprimento', 8, 2)->nullable();
-            $table->float('largura', 8, 2)->nullable();
-            $table->float('altura', 8, 2)->nullable();
+            $table->float('length', 8, 2)->nullable();
+            $table->float('width', 8, 2)->nullable();
+            $table->float('height', 8, 2)->nullable();
 
             $table->timestamps();
 
