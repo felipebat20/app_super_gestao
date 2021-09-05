@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSiteContatosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('site_contatos', function (Blueprint $table) {
@@ -24,11 +19,6 @@ class CreateSiteContatosTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('site_contatos');

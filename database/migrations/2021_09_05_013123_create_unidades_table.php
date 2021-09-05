@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUnidadesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('unidades', function (Blueprint $table) {
@@ -33,11 +28,6 @@ class CreateUnidadesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         //Desfaz o relacionamento com produto_detalhes
@@ -48,6 +38,7 @@ class CreateUnidadesTable extends Migration
             $table->dropColumn('unidade_id');
         });
 
+        //Desfaz o relacionamento com a tabela de produtos
         Schema::table('produtos', function(Blueprint $table) {
             $table->dropForeign('produtos_unidade_id_foreign');
             $table->dropColumn('unidade_id');
