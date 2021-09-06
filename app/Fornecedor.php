@@ -15,3 +15,7 @@ class Fornecedor extends Model
         'email'
     ];
 }
+
+
+//Fornecedor::find(id) retorna um objeto ou Fornecedor::find([1, 2, 3, 4])#ids retorna uma coleção de objetos.
+//Fornecedor::where

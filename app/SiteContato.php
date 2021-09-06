@@ -12,5 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteContato extends Model
 {
-    
+    protected $fillable = [
+        'name',
+        'email',
+        'telefone',
+        'message',
+        'contact_reason'
+    ];
 }
+//Utilizamos o $fillable para permitir MassAssigment, dessa forma podemos utilizar um método estático ::create para criar registross
+//métodos estáticos não dependem do objeto ser instanciado
