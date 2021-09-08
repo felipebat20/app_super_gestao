@@ -31,3 +31,4 @@ class SiteContato extends Model
 // ::whereNull('updated_at') pega todos registros onde updated_at é nulo. O contrário seria ::whereNotNull
 // Tem também ::whereDay('created_at', 31), whereYear('created_at', 2021), whereTime('created_at', '=', '22:57:17')
 // Temos o whereColumn que compara valores de duas colunas diferentes como ::whereColumn('created_at', 'updated_at') retorna os registros cujo os quais a data de criação é igual a data de update.
+// Podemos criar precedencia lógica utilizando funções de callback como ::where(function($query) { $query->where('name', 'Felipe')->orWhere('name', 'andre'); })->where(function($query) { $query->whereIn('contact_reason', [1,2])->whereBetween('id', [1, 4]);})
