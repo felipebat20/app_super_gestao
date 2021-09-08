@@ -25,4 +25,4 @@ class SiteContato extends Model
 //O método ::where é um construtor é necessário passar para ele um método get para pegar os dados da query
 //$contatos = SiteContato::where('email', 'like', '%@gmail%')->get('name');
 //O método ::where aceita alguns parametros de comparação como >, <, <=, >=, ==, !=, like('%achar em qualquer lugar%')
-// O método ::whereIn('campo', 'parametros', parametros) ::whereNotIn realiza uma comparação por desigualdade
+// O método ::whereIn('campo', 'parametros', parametros) ::whereNotIn realiza uma comparação por diferença dos parametros
