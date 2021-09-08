@@ -26,3 +26,4 @@ class SiteContato extends Model
 //$contatos = SiteContato::where('email', 'like', '%@gmail%')->get('name');
 //O método ::where aceita alguns parametros de comparação como >, <, <=, >=, ==, !=, like('%achar em qualquer lugar%')
 // O método ::whereIn('campo', 'parametros', parametros) ::whereNotIn realiza uma comparação por diferença dos parametros
+// ::WhereBetween('id', [3, 5]) colhe os registros de 3 a 5 o ::whereNotBetween('id', [3, 5]) colhe todos que não seja 3 4 ou 5 - Pode ser utilizado com datas.
