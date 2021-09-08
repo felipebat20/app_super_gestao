@@ -29,3 +29,4 @@ class SiteContato extends Model
 // ::WhereBetween('id', [3, 5]) colhe os registros de 3 a 5 o ::whereNotBetween('id', [3, 5]) colhe todos que não seja 3 4 ou 5 - Pode ser utilizado com datas.
 // orWhere para comparações ou. Para refinar certa busca podemos utilizar where()->where()->orWhere() encadeando-os.
 // ::whereNull('updated_at') pega todos registros onde updated_at é nulo. O contrário seria ::whereNotNull
+// Tem também ::whereDay('created_at', 31), whereYear('created_at', 2021), whereTime('created_at', '=', '22:57:17')
