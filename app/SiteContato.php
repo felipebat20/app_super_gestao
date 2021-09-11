@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 //Como o laravel identifica a tabela no banco de dados
 //Realizando conversões simples como
@@ -13,8 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SiteContato extends Model
 {
-    use SoftDeletes;
-    
+
     protected $fillable = [
         'name',
         'email',
@@ -23,7 +21,7 @@ class SiteContato extends Model
         'contact_reason'
     ];
 }
-//Utilizamos o $fillable para permitir MassAssigment, dessa forma podemos utilizar um método estático ::create para criar registross
+//Utilizamos o $fillable para permitir MassAssigment, dessa forma podemos utilizar um método estático ::create para criar registros
 //métodos estáticos não dependem do objeto ser instanciado
 //O método ::where é um construtor é necessário passar para ele um método get para pegar os dados da query
 //$contatos = SiteContato::where('email', 'like', '%@gmail%')->get('name');
