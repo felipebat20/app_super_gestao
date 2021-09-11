@@ -3,15 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 //Como o laravel identifica a tabela no banco de dados
-//Realizando conversões simples como 
+//Realizando conversões simples como
 // Site_Contato
 // site_contato
 // Site_contatos
 
 class SiteContato extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
         'name',
         'email',
@@ -32,3 +35,4 @@ class SiteContato extends Model
 // Tem também ::whereDay('created_at', 31), whereYear('created_at', 2021), whereTime('created_at', '=', '22:57:17')
 // Temos o whereColumn que compara valores de duas colunas diferentes como ::whereColumn('created_at', 'updated_at') retorna os registros cujo os quais a data de criação é igual a data de update.
 // Podemos criar precedencia lógica utilizando funções de callback como ::where(function($query) { $query->where('name', 'Felipe')->orWhere('name', 'andre'); })->where(function($query) { $query->whereIn('contact_reason', [1,2])->whereBetween('id', [1, 4]);})
+// Após recuperarmos uma coleção de dados do banco. É possível utilizar diversos métodos para manusear a collection.
