@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
         // php artisan db:seed --class FornecedorSeeder para executar apenas a seed de fornecedor
         // $this->call(UserSeeder::class);
         // $this->call(FornecedorSeeder::class);
-        // $this->call(SiteContatoSeeder::class);
+        $this->call(SiteContatoSeeder::class);
     }
 }
