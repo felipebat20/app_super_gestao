@@ -28,8 +28,11 @@
             <div class="contato">
                 <h1>Contato</h1>
                 <p>Caso tenha qualquer dúvida por favor entre em contato com nossa equipe pelo formulário abaixo.<p>
-                @component('site.components.form_contato', ['border'=> 'borda-branca', 'parametro' => 'Agora estamos passando um parâmetro pelo component utilizando o array associativo. Pela segunda instrução do array.'])
-                    
+                @component('site.components.form_contato', [
+                    'border'=> 'borda-branca',
+                    'parametro' => 'Agora estamos passando um parâmetro pelo component utilizando o array associativo. Pela segunda instrução do array.',
+                    'motivos' => $motivos
+                ])
                 @endcomponent
             </div>
         </div>
