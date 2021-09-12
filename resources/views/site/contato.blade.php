@@ -8,10 +8,6 @@
             <h1>Entre em contato conosco</h1>
         </div>
 
-        <pre>
-            {{print_r($errors)}}
-        </pre>
-
         <div class="informacao-pagina">
             <div class="contato-principal"  style="width: 50%; margin:auto">
                 @component('site.components.form_contato', ['border'=> 'borda-preta'])
