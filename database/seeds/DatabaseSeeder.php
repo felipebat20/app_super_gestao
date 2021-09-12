@@ -11,7 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // php artisan db:seed --class FornecedorSeeder para executar apenas a seed de fornecedor
         // $this->call(UserSeeder::class);
-        $this->call(FornecedorSeeder::class);
+        // $this->call(FornecedorSeeder::class);
+        // $this->call(SiteContatoSeeder::class);
     }
 }
