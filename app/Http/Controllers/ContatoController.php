@@ -24,11 +24,11 @@ class ContatoController extends Controller
         // $contato->save();
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:40',
             'telefone' => 'required',
             'email' => 'required',
             'contact_reason' => 'required',
-            'message' => 'required',
+            'message' => 'required|max:2000',
         ]);
 
         SiteContato::create($request->all());
