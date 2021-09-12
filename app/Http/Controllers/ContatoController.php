@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 class ContatoController extends Controller
 {
     public function contato(Request $request) {
-        return view('site.contato', ['title' => 'Contato']);
+        $reasons = [
+            1 => 'Dúvida',
+            2 => 'Elogio',
+            3 => 'Reclamação',
+        ];
+
+        return view('site.contato', ['title' => 'Contato', 'motivos' => $reasons]);
     }
 
     public function store(Request $request) {

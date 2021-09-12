@@ -10,9 +10,9 @@
     <br>
     <select name="contact_reason" class="{{ $border }}">
         <option value="">Qual o motivo do contato?</option>
-        <option value="1">Dúvida</option>
-        <option value="2">Elogio</option>
-        <option value="3">Reclamação</option>
+        @foreach ($motivos as $key => $motivo )
+            <option value="{{ $key }}" {{ old('contact_reason') == $key ? 'selected' : '' }}>{{ $motivo }}</option>
+        @endforeach
     </select>
     <br>
     <textarea name="message" value="{{ old('message') }}" class="{{ $border }}">{{ old('message') ?? 'Preencha aqui a sua mensagem' }}
