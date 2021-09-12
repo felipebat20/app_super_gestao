@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\SiteContato;
+use App\MotivoContato;
 use Illuminate\Http\Request;
 
 class ContatoController extends Controller
 {
     public function contato(Request $request) {
-        $reasons = [
-            1 => 'Dúvida',
-            2 => 'Elogio',
-            3 => 'Reclamação',
-        ];
+        $reasons = MotivoContato::all()->pluck('contact_reason', 'id')->toArray();
 
         return view('site.contato', ['title' => 'Contato', 'motivos' => $reasons]);
     }

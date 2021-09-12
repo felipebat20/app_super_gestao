@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MotivoContato;
 
 class PrincipalController extends Controller
 {
     public function principal() {
-        $reasons = [
-            1 => 'Dúvida',
-            2 => 'Elogio',
-            3 => 'Reclamação',
-        ];
+        $reasons = MotivoContato::all()->pluck('contact_reason', 'id')->toArray();
 
         return view('site.principal', ['motivos' => $reasons]);
     }
