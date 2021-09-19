@@ -20,3 +20,9 @@
     <br>
     <button type="submit" class="{{ $border }}">ENVIAR</button>
 </form>
+
+@if ($errors->any())
+    @foreach ($errors->all() as $erro)
+        {{ $erro }} <br>
+    @endforeach
+@endif
