@@ -1,8 +1,8 @@
 <?php
 
-use Faker\Core\Number;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContatoController;
+use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,9 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/', 'PrincipalController@principal')
+    ->name('site.index');
 
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
