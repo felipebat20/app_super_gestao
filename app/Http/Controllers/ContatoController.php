@@ -30,11 +30,11 @@ class ContatoController extends Controller
             'name' => 'required|min:3|max:40',
             'telefone' => 'required',
             'email' => 'email',
-            'contact_reason' => 'required',
+            'contact_reasons_id' => 'required',
             'message' => 'required|max:2000',
         ]);
 
         SiteContato::create($request->all());
-        return view('site.contato', ['title' => 'Contato']);
+        return redirect()->route('site.index');
     }
 }

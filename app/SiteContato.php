@@ -18,7 +18,7 @@ class SiteContato extends Model
         'email',
         'telefone',
         'message',
-        'contact_reason'
+        'contact_reasons_id'
     ];
 }
 //Utilizamos o $fillable para permitir MassAssigment, dessa forma podemos utilizar um método estático ::create para criar registros
