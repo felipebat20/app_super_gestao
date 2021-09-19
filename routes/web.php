@@ -20,7 +20,8 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'PrincipalController@principal')
-    ->name('site.index');
+    ->name('site.index')
+    ->middleware('log.acesso');
 
 Route::get('/contato', 'ContatoController@contato')
     ->name('site.contato');
