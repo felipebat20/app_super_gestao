@@ -32,7 +32,7 @@ Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::prefix('/app')->group(function() {
+Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/clientes', function() { return 'Clientes'; })->name('app.clientes');
 
     Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
