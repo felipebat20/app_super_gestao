@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContatoController;
-use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +19,10 @@ Route::get('/', function () {
 });
 */
 
-Route::middleware(LogAcessoMiddleware::class)
-    ->get('/', 'PrincipalController@principal')
+Route::get('/', 'PrincipalController@principal')
     ->name('site.index');
 
-Route::middleware(LogAcessoMiddleware::class)
-    ->get('/contato', 'ContatoController@contato')
+Route::get('/contato', 'ContatoController@contato')
     ->name('site.contato');
 
 Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato');
