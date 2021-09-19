@@ -24,7 +24,9 @@ Route::middleware(LogAcessoMiddleware::class)
     ->get('/', 'PrincipalController@principal')
     ->name('site.index');
 
-Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/contato', 'ContatoController@contato')
+    ->name('site.contato');
 
 Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato');
 
