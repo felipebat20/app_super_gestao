@@ -12,7 +12,17 @@ class LoginController extends Controller
         ]);
     }
 
-    public function authenticate() {
-        return 'Chegamos até aqui';
+    public function authenticate(Request $request) {
+        $rules = [
+            'user' => 'email',
+            'password' => 'required',
+        ];
+
+        $feedback = [
+            'user.email' => 'O campo usuário deve ser preenchido com um email válido.',
+            'password.required' => 'O campo senha deve é requerido.',
+        ];
+
+        $request->validate($rules, $feedback);
     }
 }
