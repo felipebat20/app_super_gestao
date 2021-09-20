@@ -30,7 +30,7 @@
               </small>
 
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Senha"
                 class="borda-preta"
