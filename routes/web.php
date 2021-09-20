@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato
 
 Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
 
-Route::get('/login', function(){ return 'Login'; })->name('site.login');
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('site.login');
 
 Route::middleware('authentication:default,guest')->prefix('/app')->group(function() {
     Route::get('/clientes', function() { return 'Clientes'; })->name('app.clientes');
