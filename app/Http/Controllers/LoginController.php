@@ -13,8 +13,10 @@ class LoginController extends Controller
     public function index(Request $request): view
     {
         if($error = $request->get('erro')){
-            if ($error !== '') {
+            if ($error == 1) {
                 $error = 'O usuário e ou e senha estão incorretos.';
+            } else if ($error == 2) {
+                $error = 'Necessário realizar login para ter acesso a página.';
             }
         }
         return view('site.login', [
@@ -48,7 +50,11 @@ class LoginController extends Controller
             ->first();
 
         if(isset($userExists->name)) {
-            ddd($user);
+            session_start();
+            $_SESSION['name'] = $userExists->name;
+            $_SESSION['email'] = $userExists->email;
+
+            return redirect()->route('app.clientes');
         } else {
             return redirect()->route('site.login', ['erro' => 1]);
         }

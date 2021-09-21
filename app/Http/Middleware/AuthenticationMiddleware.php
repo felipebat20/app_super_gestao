@@ -9,11 +9,12 @@ class AuthenticationMiddleware
 {
     public function handle($request, Closure $next, $auth_method, $profile)
     {
-        echo $auth_method.' - '.$profile;
-        if (true) {
-            return $next($request);
-        }
+        session_start();
 
-        return Response('Acesso negado! Rota exige autenticacao');
+        if (isset($_SESSION['email'])) {
+            return $next($request);
+        } else {
+            return redirect()->route('site.login', ['erro' => 2]);
+        }
     }
 }
