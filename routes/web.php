@@ -28,7 +28,7 @@ Route::post('/contato', [ContatoController::class, 'store'])->name('site.contato
 
 Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
 
-Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::get('/login/{erro?}', [LoginController::class, 'index'])->name('site.login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('site.login');
 
 Route::middleware('authentication:default,guest')->prefix('/app')->group(function() {

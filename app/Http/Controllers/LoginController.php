@@ -4,16 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function index() {
+    public function index(Request $request): view
+    {
+        if($error = $request->get('erro')){
+            if ($error !== '') {
+                $error = 'O usuário e ou e senha estão incorretos.';
+            }
+        }
         return view('site.login', [
-            'title' => 'Login'
+            'title' => 'Login',
+            'error' => $error,
         ]);
     }
 
-    public function authenticate(Request $request) {
+    public function authenticate(Request $request): RedirectResponse
+    {
         $rules = [
             'user' => 'email',
             'password' => 'required',
@@ -25,22 +36,21 @@ class LoginController extends Controller
         ];
 
         $request->validate($rules, $feedback);
-
         $email = $request->get('user');
         $password = $request->get('password');
 
         $user = new User();
 
         $userExists = $user
-                        ->where('email', $email)
-                        ->where('password', $password)
-                        ->get()
-                        ->first();
+            ->where('email', $email)
+            ->where('password', $password)
+            ->get()
+            ->first();
 
         if(isset($userExists->name)) {
-            echo 'User exists';
+            ddd($user);
         } else {
-            echo 'User does not exists';
+            return redirect()->route('site.login', ['erro' => 1]);
         }
     }
 }
