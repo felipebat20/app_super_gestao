@@ -5,13 +5,13 @@
 @section('container')
   <div class="conteudo-pagina">
     @include('app.fornecedor.partials.header')
+
     <div class="informacao-pagina">
       <div style="width: 30%;" class="mx-auto">
         <form
-          action="{{ route('app.fornecedor.list') }}"
+          action="{{ route('app.fornecedor') }}"
           method="post"
         >
-          @csrf
           <input
             type="text"
             name="name"
@@ -44,7 +44,7 @@
             type="submit"
             class="borda-preta"
           >
-            Pesquisar
+            Cadastrar
           </button>
         </form>
       </div>

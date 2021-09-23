@@ -40,7 +40,11 @@ Route::middleware('authentication:default,guest')->prefix('/app')->group(functio
     Route::get('/cliente', [CustomerController::class, 'index'])->name('app.cliente');
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'logout'])->name('app.sair');
-    Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::prefix('/fornecedor')->group(function () {
+        Route::get('/', [FornecedorController::class, 'index'])->name('app.fornecedor');
+        Route::post('/list', [FornecedorController::class, 'list'])->name('app.fornecedor.list');
+        Route::get('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
+    });
     Route::get('/produto', [ProductController::class, 'index'])->name('app.produto');
 });
 
