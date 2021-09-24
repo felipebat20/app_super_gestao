@@ -36,7 +36,7 @@ Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
 Route::get('/login/{erro?}', [LoginController::class, 'index'])->name('site.login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('site.login');
 
-Route::middleware('authentication:default,guest')->prefix('/app')->group(function() {
+Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/cliente', [CustomerController::class, 'index'])->name('app.cliente');
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'logout'])->name('app.sair');
@@ -44,6 +44,7 @@ Route::middleware('authentication:default,guest')->prefix('/app')->group(functio
         Route::get('/', [FornecedorController::class, 'index'])->name('app.fornecedor');
         Route::post('/list', [FornecedorController::class, 'list'])->name('app.fornecedor.list');
         Route::get('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
+        Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
     });
     Route::get('/produto', [ProductController::class, 'index'])->name('app.produto');
 });

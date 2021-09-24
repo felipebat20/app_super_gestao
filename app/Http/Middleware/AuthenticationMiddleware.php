@@ -7,7 +7,7 @@ use Facade\FlareClient\Http\Response;
 
 class AuthenticationMiddleware
 {
-    public function handle($request, Closure $next, $auth_method, $profile)
+    public function handle($request, Closure $next)
     {
         session_start();
 
