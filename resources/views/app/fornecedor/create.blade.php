@@ -12,10 +12,15 @@
       style="width:30%;"
       class="mx-auto text-left"
       >
-        {{ $msg }}
+        {{ $msg ?? '' }}
         <form
           action="{{ route('app.fornecedor.create') }}"
           method="post"
+        >
+        <input
+          type="hidden"
+          name="id"
+          value="{{ $fornecedor->id ?? old('id') }}"
         >
           @csrf
           <input
@@ -23,7 +28,7 @@
             name="name"
             class="borda-preta"
             placeholder="Nome do fornecedor"
-            value="{{ old('name') }}"
+            value="{{ $fornecedor->name ?? old('name') }}"
           >
           {{ $errors->first('name') ?? '' }}
 
@@ -32,7 +37,7 @@
           name="site"
           class="borda-preta"
           placeholder="Site"
-          value="{{ old('site') }}"
+          value="{{ $fornecedor->site ?? old('site') }}"
           >
           {{ $errors->has('site') ? $errors->first('site') : '' }}
 
@@ -41,7 +46,7 @@
           name="uf"
           class="borda-preta"
           placeholder="Unidade federativa"
-          value="{{ old('uf') }}"
+          value="{{ $fornecedor->uf ?? old('uf') }}"
           >
           {{ $errors->has('uf') ? $errors->first('uf') : '' }}
 
@@ -50,7 +55,7 @@
           name="email"
           class="borda-preta"
           placeholder="Email"
-          value="{{ old('email') }}"
+          value="{{ $fornecedor->email ?? old('email') }}"
           >
           {{ $errors->first('email') ?? '' }}
 

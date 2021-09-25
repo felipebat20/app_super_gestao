@@ -23,10 +23,10 @@ class FornecedorController extends Controller
         return view('app.fornecedor.list', ['fornecedores' => $fornecedores]);
     }
 
-    public function create(Request $request): View
+    public function create(Request $request)
     {
         $msg = "";
-        if ($request->input('_token')) {
+        if ($request->input('_token') && !$request->input('id')) {
             $rules = [
                 'name' => 'required|min:3|max:40',
                 'site' => 'required',
@@ -50,6 +50,19 @@ class FornecedorController extends Controller
             $msg = 'Cadastro efetuado com sucesso.';
         }
 
+        if ($request->input('_token') && $request->input('id')) {
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $fornecedor->update($request->all());
+            $msg = "Fornecedor atualizado com sucesso.";
+            return redirect()->route('app.fornecedor.edit', ['id' => $request->input('id'), 'msg' => $msg]);
+        }
+
         return view('app.fornecedor.create', ['msg' => $msg]);
+    }
+
+    public function update($id, $msg = '')
+    {
+        $fornecedor = Fornecedor::find($id);
+        return view('app.fornecedor.create', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 }

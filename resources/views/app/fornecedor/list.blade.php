@@ -52,7 +52,7 @@
                 </td>
 
                 <td>
-                  Alterar
+                  <a href="{{ route('app.fornecedor.edit', $fornecedor->id) }}">Editar</a>
                 </td>
 
                 <td>
