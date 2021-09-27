@@ -196,3 +196,12 @@ button:hover {
 .redes-sociais img {
     margin: 0px 15px 0px 15px;
 }
+
+.pagination {
+    margin: 3px auto;
+    justify-content: center;
+}
+
+.page-item {
+    margin: 0 1px;
+}

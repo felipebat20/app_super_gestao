@@ -43,6 +43,7 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::prefix('/fornecedor')->group(function () {
         Route::get('/', [FornecedorController::class, 'index'])->name('app.fornecedor');
         Route::post('/list', [FornecedorController::class, 'list'])->name('app.fornecedor.list');
+        Route::get('/list', [FornecedorController::class, 'list'])->name('app.fornecedor.list');
         Route::get('/update/{id}/{msg?}', [FornecedorController::class, 'update'])->name('app.fornecedor.edit');
         Route::get('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
         Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
