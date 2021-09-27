@@ -71,7 +71,7 @@
 
                 <td>
                   <a
-                    href="#"
+                    href="{{ route('app.fornecedor.delete', $fornecedor->id) }}"
                     class="btn-danger btn-sm"
                   >
                     Excluir

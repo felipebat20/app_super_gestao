@@ -65,4 +65,11 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);
         return view('app.fornecedor.create', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
+
+    public function delete($id)
+    {
+        Fornecedor::find($id)->delete();
+
+        return redirect()->route('app.fornecedor');
+    }
 }
