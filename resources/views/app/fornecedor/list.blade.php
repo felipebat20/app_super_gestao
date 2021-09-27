@@ -11,8 +11,9 @@
         <table
           border="1"
           width="100%"
+          class="table table-striped"
         >
-          <thead>
+          <thead class="thead-dark">
             <tr>
               <th>
                 Nome
@@ -37,32 +38,52 @@
             @foreach ($fornecedores as $fornecedor)
               <tr>
                 <td>
-                  {{ $fornecedor->name }}
+                  <small>
+                    {{ $fornecedor->name }}
+                  </small>
                 </td>
 
                 <td>
-                  {{ $fornecedor->site }}
+                  <small>
+                    {{ $fornecedor->site }}
+                  </small>
                 </td>
 
                 <td>
-                  {{ $fornecedor->uf }}
+                  <small>
+                    {{ $fornecedor->uf }}
+                  </small>
                 </td>
                 <td>
-                  {{$fornecedor->email }}
+                  <small>
+                    {{$fornecedor->email }}
+                  </small>
                 </td>
 
                 <td>
-                  <a href="{{ route('app.fornecedor.edit', $fornecedor->id) }}">Editar</a>
+                  <a
+                    class="btn-success btn-sm "
+                    href="{{ route('app.fornecedor.edit', $fornecedor->id) }}"
+                  >
+                    Editar
+                  </a>
                 </td>
 
                 <td>
-                  Excluir
+                  <a
+                    href="#"
+                    class="btn-danger btn-sm"
+                  >
+                    Excluir
+                  </a>
                 </td>
               </tr>
             @endforeach
           </tbody>
         </table>
         {{ $fornecedores->appends($request)->links() }}
+
+        Exibindo {{ $fornecedores->count() }} fornecedores de {{ $fornecedores->total() }} (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }})
       </div>
     </div>
   </div>
