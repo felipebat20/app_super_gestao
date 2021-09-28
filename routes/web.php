@@ -49,7 +49,7 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
         Route::get('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
         Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
     });
-    Route::resource('app.product', 'ProductController');
+    Route::resource('product', 'ProductController');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');

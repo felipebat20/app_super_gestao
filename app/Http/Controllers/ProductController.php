@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        echo 'O porra, esqueci o ;';
+        $produtos = Product::paginate(10);
+
+        return view('app.product.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
     public function create()

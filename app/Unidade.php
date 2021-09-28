@@ -4,14 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Unidade extends Model
 {
-    protected $table = 'produtos';
-
     protected $fillable = [
-        'name',
+        'unit',
         'description',
-        'weight',
-        'unidade_id',
     ];
 }
