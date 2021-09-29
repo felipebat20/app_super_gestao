@@ -12,9 +12,8 @@
       style="width:30%;"
       class="mx-auto text-left"
       >
-        {{-- {{ $msg ?? '' }} --}}
         <form
-          {{-- action="{{ route('app.fornecedor.create') }}" --}}
+          action="{{ route('product.store') }}"
           method="post"
         >
           @csrf
@@ -43,7 +42,7 @@
           >
 
           <select
-            name="unit_id"
+            name="unidade_id"
             class="borda-preta"
             {{-- value="{{ $fornecedor->email ?? old('email') }}" --}}
           >

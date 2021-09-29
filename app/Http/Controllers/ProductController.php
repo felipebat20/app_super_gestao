@@ -17,13 +17,13 @@ class ProductController extends Controller
 
     public function create()
     {
-
         return view('app.product.create', ['units' => Unidade::all()]);
     }
 
     public function store(Request $request)
     {
-        //
+        Product::create($request->all());
+        return redirect()->route('product.index');
     }
 
     public function show(Product $product)
