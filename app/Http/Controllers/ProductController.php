@@ -22,7 +22,20 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $rules = [
+            'name' => 'required|min:2|max:40',
+            'description' => 'required|max:200',
+            'weight' => 'required',
+            'unidade_id' => 'required',
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é requerido.',
+            'min' => 'O campo :attribute é necessário ter pelo menos :min caracteres.',
+            'max' => 'O campo :attribute é necessário ter no máximo :max caracteres.',
+        ];
+
+        Product::create($request->validate($rules, $feedback));
         return redirect()->route('product.index');
     }
 
