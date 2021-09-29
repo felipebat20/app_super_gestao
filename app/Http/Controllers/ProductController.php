@@ -24,15 +24,16 @@ class ProductController extends Controller
     {
         $rules = [
             'name' => 'required|min:2|max:40',
-            'description' => 'required|max:200',
-            'weight' => 'required',
-            'unidade_id' => 'required',
+            'description' => 'required|max:2000',
+            'weight' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id',
         ];
 
         $feedback = [
             'required' => 'O campo :attribute é requerido.',
             'min' => 'O campo :attribute é necessário ter pelo menos :min caracteres.',
             'max' => 'O campo :attribute é necessário ter no máximo :max caracteres.',
+            'unidade_id.exists' => 'A unidade informada não existe.',
         ];
 
         Product::create($request->validate($rules, $feedback));
