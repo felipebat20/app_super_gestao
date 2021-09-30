@@ -43,14 +43,14 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function show(Product $product)
+    public function show(Product $product): View
     {
         return view('app.product.show', [
             'product' => $product,
         ]);
     }
 
-    public function edit(Product $product)
+    public function edit(Product $product): View
     {
         return view('app.product.edit', [
             'product' => $product,
@@ -60,7 +60,8 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->route('product.index');
     }
 
     public function destroy(Product $product)

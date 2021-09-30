@@ -11,10 +11,11 @@
         class="mx-auto text-left"
       >
         <form
-          action="{{ route('product.store') }}"
+          action="{{ route('product.update', $product->id) }}"
           method="post"
         >
           @csrf
+          @method('PUT')
           <input
             type="text"
             name="name"
@@ -49,6 +50,7 @@
             <option value="">
               Selecione a unidade
             </option>
+
             @foreach ($units as $unit)
               <option value="{{ $unit->id }}" {{ ($product->unidade_id ?? old('unidade_id') == $unit->id ? 'selected' : '') }}>
                 {{ $unit->description }}
@@ -58,10 +60,10 @@
             {{ $errors->first('unidade_id') ?? '' }}
 
           <button
-          type="submit"
-          class="borda-preta"
+            type="submit"
+            class="borda-preta"
           >
-            Cadastrar
+            Atualizar
           </button>
         </form>
       </div>

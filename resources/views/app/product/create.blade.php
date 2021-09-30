@@ -51,7 +51,7 @@
             </option>
 
             @foreach ($units as $unit)
-              <option value="{{ $unit->id }}" {{ ($product->unidade_id ?? old('unidade_id') == old('unidade_id') ? 'selected' : '') }}>
+              <option value="{{ $unit->id }}" {{ $unit->id == old('unidade_id') ? 'selected' : '' }}>
                 {{ $unit->description }}
               </option>
             @endforeach
