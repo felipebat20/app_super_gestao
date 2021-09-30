@@ -50,6 +50,7 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
         Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
     });
     Route::resource('product', 'ProductController');
+    Route::resource('product-detail', 'ProductDetailController');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
