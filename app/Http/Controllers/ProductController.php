@@ -52,14 +52,14 @@ class ProductController extends Controller
 
     public function edit(Product $product): View
     {
-        // return view('app.product.edit', [
-        //     'product' => $product,
-        //     'units' => Unidade::all(),
-        // ]);
-        return view('app.product.create', [
+        return view('app.product.edit', [
             'product' => $product,
             'units' => Unidade::all(),
         ]);
+        // return view('app.product.create', [
+        //     'product' => $product,
+        //     'units' => Unidade::all(),
+        // ]);
     }
 
     public function update(Request $request, Product $product)
