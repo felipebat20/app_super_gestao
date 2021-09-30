@@ -4,23 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Unidade;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $produtos = Product::paginate(10);
 
         return view('app.product.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('app.product.create', ['units' => Unidade::all()]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $rules = [
             'name' => 'required|min:2|max:40',
@@ -37,12 +39,15 @@ class ProductController extends Controller
         ];
 
         Product::create($request->validate($rules, $feedback));
+
         return redirect()->route('product.index');
     }
 
     public function show(Product $product)
     {
-        //
+        return view('app.product.show', [
+            'product' => $product,
+        ]);
     }
 
     public function edit(Product $product)

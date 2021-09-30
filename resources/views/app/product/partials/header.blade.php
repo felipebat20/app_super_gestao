@@ -1,6 +1,6 @@
 <div class="titulo-pagina-2">
   <p>
-    Listagem de produtos
+    {{ $title ?? ''}}
   </p>
 </div>
 

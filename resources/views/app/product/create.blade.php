@@ -4,7 +4,7 @@
 
 @section('container')
   <div class="conteudo-pagina">
-    @include('app.product.partials.header')
+    @include('app.product.partials.header', ['title' => 'Criar produto'])
     <div class="informacao-pagina">
       <div
         style="width:30%;"

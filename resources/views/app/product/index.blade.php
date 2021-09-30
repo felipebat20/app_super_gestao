@@ -4,7 +4,7 @@
 
 @section('container')
   <div class="conteudo-pagina">
-    @include('app.product.partials.header')
+    @include('app.product.partials.header', ['title' => 'Listar produtos'])
 
     <div class="informacao-pagina">
       <div style="width: 90%;" class="mx-auto">
@@ -29,6 +29,7 @@
               <th>
                 Unidade ID
               </th>
+              <th />
               <th />
               <th />
             </tr>
@@ -58,6 +59,15 @@
                   <small>
                     {{ $produto->unidade_id }}
                   </small>
+                </td>
+
+                <td>
+                  <a
+                    class="btn-info btn-sm text-white"
+                    href="{{ route('product.show', $produto->id) }}"
+                  >
+                    Ver
+                  </a>
                 </td>
 
                 <td>
