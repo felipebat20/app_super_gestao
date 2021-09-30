@@ -1,10 +1,10 @@
 @extends('app.layouts.master')
 
-@section('title', 'Fornecedor')
+@section('title', 'Produtos')
 
 @section('container')
   <div class="conteudo-pagina">
-    @include('app.product.partials.header', ['title' => 'Criar produto'])
+    @include('app.product.partials.header', ['title' => 'Editar produto'])
     <div class="informacao-pagina">
       <div
         style="width:30%;"
@@ -49,9 +49,8 @@
             <option value="">
               Selecione a unidade
             </option>
-
             @foreach ($units as $unit)
-              <option value="{{ $unit->id }}" {{ ($product->unidade_id ?? old('unidade_id') == old('unidade_id') ? 'selected' : '') }}>
+              <option value="{{ $unit->id }}" {{ ($product->unidade_id ?? old('unidade_id') == $unit->id ? 'selected' : '') }}>
                 {{ $unit->description }}
               </option>
             @endforeach

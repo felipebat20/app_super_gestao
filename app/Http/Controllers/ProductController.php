@@ -52,7 +52,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
+        return view('app.product.edit', [
+            'product' => $product,
+            'units' => Unidade::all(),
+        ]);
     }
 
     public function update(Request $request, Product $product)

@@ -73,7 +73,7 @@
                 <td>
                   <a
                     class="btn-success btn-sm "
-                    {{-- href="{{ route('product.edit', $produto->id) }}" --}}
+                    href="{{ route('product.edit', $produto->id) }}"
                   >
                     Editar
                   </a>
