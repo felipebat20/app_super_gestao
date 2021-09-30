@@ -80,12 +80,20 @@
                 </td>
 
                 <td>
-                  <a
-                    {{-- href="{{ route('product.delete', $produto->id) }}" --}}
-                    class="btn-danger btn-sm"
+                  <form
+                    action="{{ route('product.destroy', ['product' => $produto->id]) }}"
+                    method="POST"
+                    class="p-0"
                   >
-                    Excluir
-                  </a>
+                    @csrf
+                    @method('DELETE')
+                    <button
+                      type="submit"
+                      class="btn-sm btn-danger m-0"
+                    >
+                      Excluir
+                    </button>
+                  </form>
                 </td>
               </tr>
             @endforeach
