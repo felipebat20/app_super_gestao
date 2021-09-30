@@ -1,20 +1,33 @@
 @extends('app.layouts.master')
 
-@section('title', 'Fornecedor')
+@section('title', 'Produto')
 
 @section('container')
   <div class="conteudo-pagina">
-    @include('app.product.partials.header', ['title' => 'Criar produto'])
+    @if (isset($product->id))
+      @include('app.product.partials.header', ['title' => 'Editar produto'])
+    @else
+      @include('app.product.partials.header', ['title' => 'Criar produto'])
+    @endif
     <div class="informacao-pagina">
       <div
         style="width:30%;"
         class="mx-auto text-left"
       >
+      @if (isset($product->id))
+        <form
+          action="{{ route('product.update', ['product' => $product->id]) }}"
+          method="post"
+        >
+          @csrf
+          @method('PUT')
+      @else
         <form
           action="{{ route('product.store') }}"
           method="post"
         >
           @csrf
+      @endif
           <input
             type="text"
             name="name"
@@ -40,7 +53,7 @@
             placeholder="Peso"
             value="{{ $product->weight ?? old('weight') }}"
           >
-          {{ $errors->first('weight') ?? '' }}
+            {{ $errors->first('weight') ?? '' }}
 
           <select
             name="unidade_id"
@@ -51,7 +64,7 @@
             </option>
 
             @foreach ($units as $unit)
-              <option value="{{ $unit->id }}" {{ $unit->id == old('unidade_id') ? 'selected' : '' }}>
+              <option value="{{ $unit->id }}" {{ ($product->unidade_id ?? old('unidade_id')) == $unit->id ? 'selected' : '' }}>
                 {{ $unit->description }}
               </option>
             @endforeach
