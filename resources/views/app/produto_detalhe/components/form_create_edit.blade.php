@@ -1,6 +1,6 @@
-@if (isset($product_detail->id))
+@if (isset($productDetail->id))
   <form
-    action="{{ route('product.update', ['product' => $product_detail->id]) }}"
+    action="{{ route('product-detail.update', ['product_detail' => $productDetail->id]) }}"
     method="post"
   >
     @csrf
@@ -17,7 +17,7 @@
       name="produto_id"
       class="borda-preta"
       placeholder="ID do produto"
-      value="{{ $product_detail->produto_id ?? old('produto_id') }}"
+      value="{{ $productDetail->produto_id ?? old('produto_id') }}"
     >
       {{ $errors->first('produto_id') ?? '' }}
 
@@ -26,7 +26,7 @@
       name="length"
       class="borda-preta"
       placeholder="Comprimento"
-      value="{{ $product_detail->length ?? old('length') }}"
+      value="{{ $productDetail->length ?? old('length') }}"
     >
       {{ $errors->first('length') ?? '' }}
 
@@ -35,7 +35,7 @@
       name="width"
       class="borda-preta"
       placeholder="Largura"
-      value="{{ $product_detail->width ?? old('width') }}"
+      value="{{ $productDetail->width ?? old('width') }}"
     >
       {{ $errors->first('width') ?? '' }}
 
@@ -44,7 +44,7 @@
       name="height"
       class="borda-preta"
       placeholder="Altura"
-      value="{{ $product_detail->height ?? old('height') }}"
+      value="{{ $productDetail->height ?? old('height') }}"
     >
       {{ $errors->first('height') ?? '' }}
 
@@ -59,7 +59,7 @@
       @foreach ($units as $unit)
         <option
           value="{{ $unit->id }}"
-          {{ ($product_detail->unidade_id ?? old('unidade_id')) == $unit->id ? 'selected' : '' }}
+          {{ ($productDetail->unidade_id ?? old('unidade_id')) == $unit->id ? 'selected' : '' }}
         >
           {{ $unit->description }}
         </option>

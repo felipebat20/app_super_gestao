@@ -24,20 +24,21 @@ class ProductDetailController extends Controller
         ProductDetail::create($request->all());
     }
 
-    public function show($id)
+    public function show(ProductDetail $id)
     {
         //
     }
 
 
-    public function edit($id)
+    public function edit(ProductDetail $productDetail)
     {
-        //
+        return view('app.produto_detalhe.edit', ['productDetail' => $productDetail, 'units' => Unidade::all()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, ProductDetail $productDetail)
     {
-        //
+        $productDetail->update($request->all());
+        echo 'Atualização feita com sucesso.';
     }
 
     public function destroy($id)
