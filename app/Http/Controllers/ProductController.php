@@ -15,15 +15,15 @@ class ProductController extends Controller
     {
         $produtos = Product::paginate(10);
 
-        foreach($produtos as $key => $produto) {
-            $produtoDetalhe = ProductDetail::where('produto_id', $produto->id)->first();
+        // foreach($produtos as $key => $produto) {
+        //     $produtoDetalhe = ProductDetail::where('produto_id', $produto->id)->first();
 
-            if($produtoDetalhe) {
-                $produtos[$key]['length'] = $produtoDetalhe->length;
-                $produtos[$key]['width'] = $produtoDetalhe->width;
-                $produtos[$key]['height'] = $produtoDetalhe->height;
-            }
-        }
+        //     if($produtoDetalhe) {
+        //         $produtos[$key]['length'] = $produtoDetalhe->length;
+        //         $produtos[$key]['width'] = $produtoDetalhe->width;
+        //         $produtos[$key]['height'] = $produtoDetalhe->height;
+        //     }
+        // }
 
         return view('app.product.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }

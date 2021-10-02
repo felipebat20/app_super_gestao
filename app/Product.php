@@ -14,4 +14,8 @@ class Product extends Model
         'weight',
         'unidade_id',
     ];
+
+    public function productDetail() {
+        return $this->hasOne(ProductDetail::class, 'produto_id');
+    }
 }
