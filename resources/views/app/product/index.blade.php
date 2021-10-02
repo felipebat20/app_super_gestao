@@ -27,6 +27,18 @@
               </th>
 
               <th>
+                Comprimento
+              </th>
+
+              <th>
+                Altura
+              </th>
+
+              <th>
+                Largura
+              </th>
+
+              <th>
                 Unidade ID
               </th>
               <th />
@@ -52,6 +64,24 @@
                 <td>
                   <small>
                     {{ $produto->weight }}
+                  </small>
+                </td>
+
+                <td>
+                  <small>
+                    {{ $produto->length ?? 'Não informado' }}
+                  </small>
+                </td>
+
+                <td>
+                  <small>
+                    {{ $produto->width ?? 'Não informado' }}
+                  </small>
+                </td>
+
+                <td>
+                  <small>
+                    {{ $produto->height ?? 'Não informado' }}
                   </small>
                 </td>
 
