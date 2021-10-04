@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class ProductDetail extends Model
 {
@@ -14,4 +15,8 @@ class ProductDetail extends Model
         'height',
         'unidade_id',
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class, 'produto_id');
+    }
 }
