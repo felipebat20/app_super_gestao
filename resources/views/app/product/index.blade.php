@@ -69,19 +69,19 @@
 
                 <td>
                   <small>
-                    {{ $produto->productDetail->length ?? 'Não informado' }}
+                    {{ $produto->itemDetail->length ?? 'Não informado' }}
                   </small>
                 </td>
 
                 <td>
                   <small>
-                    {{ $produto->productDetail->width ?? 'Não informado' }}
+                    {{ $produto->itemDetail->width ?? 'Não informado' }}
                   </small>
                 </td>
 
                 <td>
                   <small>
-                    {{ $produto->productDetail->height ?? 'Não informado' }}
+                    {{ $produto->itemDetail->height ?? 'Não informado' }}
                   </small>
                 </td>
 

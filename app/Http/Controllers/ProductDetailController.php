@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Unidade;
 use App\ProductDetail;
+use App\ItemDetail;
 
 class ProductDetailController extends Controller
 {
@@ -30,9 +31,13 @@ class ProductDetailController extends Controller
     }
 
 
-    public function edit(ProductDetail $productDetail)
+    public function edit($id)
     {
-        return view('app.produto_detalhe.edit', ['productDetail' => $productDetail, 'units' => Unidade::all()]);
+        $productDetail = ItemDetail::find($id);
+        return view('app.produto_detalhe.edit', [
+            'productDetail' => $productDetail,
+            'units' => Unidade::all(),
+        ]);
     }
 
     public function update(Request $request, ProductDetail $productDetail)

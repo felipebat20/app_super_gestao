@@ -7,12 +7,12 @@
     @include('app.product.partials.header', ['title' => 'Editar detalhes do produto'])
     <div class="informacao-pagina">
       Produto
-      <p>
-        Nome: {{ $productDetail->product->name }}
+      <p class="text-left">
+        Nome: {{ $productDetail->item->name }}
       </p>
 
       <p>
-        Descrição: {{ $productDetail->product->description }}
+        Descrição: {{ $productDetail->item->description }}
       </p>
 
       <div

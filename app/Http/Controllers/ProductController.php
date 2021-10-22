@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Item;
 use App\ProductDetail;
 use App\Unidade;
 use Illuminate\Contracts\View\View;
@@ -13,7 +14,7 @@ class ProductController extends Controller
 {
     public function index(Request $request): View
     {
-        $produtos = Product::paginate(10);
+        $produtos = Item::paginate(10);
 
         // foreach($produtos as $key => $produto) {
         //     $produtoDetalhe = ProductDetail::where('produto_id', $produto->id)->first();
@@ -25,7 +26,10 @@ class ProductController extends Controller
         //     }
         // }
 
-        return view('app.product.index', ['produtos' => $produtos, 'request' => $request->all()]);
+        return view('app.product.index', [
+            'produtos' => $produtos,
+            'request' => $request->all(),
+        ]);
     }
 
     public function create(): View
