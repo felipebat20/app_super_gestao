@@ -33,7 +33,7 @@ class ProductDetailController extends Controller
 
     public function edit($id)
     {
-        $productDetail = ItemDetail::find($id);
+        $productDetail = ItemDetail::with(['item'])->find($id);
         return view('app.produto_detalhe.edit', [
             'productDetail' => $productDetail,
             'units' => Unidade::all(),

@@ -5,6 +5,7 @@
 @section('container')
   <div class="conteudo-pagina">
     @include('app.product.partials.header', ['title' => 'Editar detalhes do produto'])
+
     <div class="informacao-pagina">
       Produto
       <p class="text-left">
