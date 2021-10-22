@@ -19,7 +19,11 @@
               </th>
 
               <th>
-                Fornecedor
+                Nome do fornecedor
+              </th>
+
+              <th>
+                UF do fornecedor
               </th>
 
               <th>
@@ -46,8 +50,6 @@
                 Unidade ID
               </th>
               <th />
-              <th />
-              <th />
             </tr>
           </thead>
 
@@ -63,6 +65,12 @@
                 <td>
                   <small>
                     {{ $produto->fornecedor->name }}
+                  </small>
+                </td>
+
+                <td>
+                  <small>
+                    {{ $produto->fornecedor->uf }}
                   </small>
                 </td>
 
