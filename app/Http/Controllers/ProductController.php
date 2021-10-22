@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index(Request $request): View
     {
-        $produtos = Item::paginate(10);
+        $produtos = Item::with(['itemDetail'])->paginate(10);
 
         // foreach($produtos as $key => $produto) {
         //     $produtoDetalhe = ProductDetail::where('produto_id', $produto->id)->first();
