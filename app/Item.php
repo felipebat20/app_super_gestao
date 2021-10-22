@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\ItemDetail;
+use App\Fornecedor;
 
 class Item extends Model
 {
@@ -18,5 +19,9 @@ class Item extends Model
 
     public function itemDetail() {
         return $this->hasOne(ItemDetail::class, 'produto_id', 'id');
+    }
+
+    public function fornecedor() {
+        return $this->belongsTo(Fornecedor::class, 'fornecedor_id', 'id');
     }
 }

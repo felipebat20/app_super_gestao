@@ -19,6 +19,10 @@
               </th>
 
               <th>
+                Fornecedor
+              </th>
+
+              <th>
                 Descrição
               </th>
 
@@ -53,6 +57,12 @@
                 <td>
                   <small>
                     {{ $produto->name }}
+                  </small>
+                </td>
+
+                <td>
+                  <small>
+                    {{ $produto->fornecedor->name }}
                   </small>
                 </td>
 
@@ -93,39 +103,36 @@
                 </td>
 
                 <td>
-                  <a
-                    class="btn-info btn-sm text-white"
-                    href="{{ route('product.show', $produto->id) }}"
-                  >
-                    Ver
-                  </a>
-                </td>
-
-                <td>
-                  <a
-                    class="btn-success btn-sm "
-                    href="{{ route('product.edit', $produto->id) }}"
-                  >
-                    Editar
-                  </a>
-                </td>
-
-                <td>
-                  <form
-                    action="{{ route('product.destroy', ['product' => $produto->id]) }}"
-                    method="POST"
-                    class="p-0"
-                  >
-                    @csrf
-                    @method('DELETE')
-                    <button
-                      type="submit"
-                      class="btn-sm btn-danger m-0"
+                  <div class="d-flex flex-column">
+                    <a
+                      class="btn-info btn-sm text-white my-1"
+                      href="{{ route('product.show', $produto->id) }}"
                     >
-                      Excluir
-                    </button>
-                  </form>
-                </td>
+                      Ver
+                    </a>
+
+                    <a
+                      class="btn-success btn-sm my-1"
+                      href="{{ route('product.edit', $produto->id) }}"
+                    >
+                      Editar
+                    </a>
+
+                    <form
+                      action="{{ route('product.destroy', ['product' => $produto->id]) }}"
+                      method="POST"
+                      class="p-0 my-1"
+                    >
+                      @csrf
+                      @method('DELETE')
+                        <button
+                          type="submit"
+                          class="btn-sm btn-danger m-0"
+                        >
+                          Excluir
+                        </button>
+                    </form>
+                  </div>
               </tr>
             @endforeach
           </tbody>
