@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Item;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fornecedor extends Model
@@ -17,6 +19,12 @@ class Fornecedor extends Model
         'uf',
         'email'
     ];
+
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Item::class, 'fornecedor_id', 'id');
+    }
 }
 
 

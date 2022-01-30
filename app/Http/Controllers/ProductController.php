@@ -14,17 +14,10 @@ class ProductController extends Controller
 {
     public function index(Request $request): View
     {
-        $produtos = Item::with(['itemDetail'])->paginate(10);
-
-        // foreach($produtos as $key => $produto) {
-        //     $produtoDetalhe = ProductDetail::where('produto_id', $produto->id)->first();
-
-        //     if($produtoDetalhe) {
-        //         $produtos[$key]['length'] = $produtoDetalhe->length;
-        //         $produtos[$key]['width'] = $produtoDetalhe->width;
-        //         $produtos[$key]['height'] = $produtoDetalhe->height;
-        //     }
-        // }
+        $produtos = Item::with([
+            'itemDetail',
+            'fornecedor',
+        ])->paginate(10);
 
         return view('app.product.index', [
             'produtos' => $produtos,

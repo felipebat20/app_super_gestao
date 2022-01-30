@@ -17,6 +17,7 @@
               method="post"
             >
               @csrf
+
               <input
                 type="text"
                 name="user"
