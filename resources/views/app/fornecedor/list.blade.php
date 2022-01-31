@@ -9,9 +9,10 @@
         <div class="informacao-pagina">
             <div style="width: 90%;" class="mx-auto">
                 <table
-                      border="1"
-                      width="100%"
-                      class="table table-striped">
+                    border="1"
+                    width="100%"
+                    class="table table-striped"
+                >
                     <thead class="thead-dark">
                         <tr>
                             <th>
