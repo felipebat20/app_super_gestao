@@ -10,7 +10,11 @@
         style="width:30%;"
         class="mx-auto text-left"
       >
-        @component('app.product.components.form_create_edit', ['product' => $product, 'units' => $units])
+        @component('app.product.components.form_create_edit', [
+          'product' => $product,
+          'units' => $units,
+          'fornecedores' => $fornecedores,
+        ])
 
         @endcomponent
           <button

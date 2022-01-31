@@ -54,3 +54,19 @@
     @endforeach
   </select>
     {{ $errors->first('unidade_id') ?? '' }}
+
+  <select
+    name="fornecedor_id"
+    class="borda-preta"
+  >
+    <option value="">
+      Selecione um fornecedor
+    </option>
+
+    @foreach ($fornecedores as $fornecedor)
+      <option value="{{ $fornecedor->id }}" {{ ($product->fornecedor_id ?? old('fornecedor_id')) == $fornecedor->id ? 'selected' : '' }}>
+        {{ $fornecedor->name }}
+      </option>
+    @endforeach
+  </select>
+    {{ $errors->first('unidade_id') ?? '' }}

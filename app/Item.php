@@ -15,6 +15,7 @@ class Item extends Model
         'description',
         'weight',
         'unidade_id',
+        'fornecedor_id',
     ];
 
     public function itemDetail() {

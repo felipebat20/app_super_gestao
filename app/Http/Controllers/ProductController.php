@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Item;
-use App\ProductDetail;
+use App\Fornecedor;
 use App\Unidade;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -27,7 +27,10 @@ class ProductController extends Controller
 
     public function create(): View
     {
-        return view('app.product.create', ['units' => Unidade::all()]);
+        return view('app.product.create', [
+            'units' => Unidade::all(),
+            'fornecedores' => Fornecedor::all(),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -37,6 +40,7 @@ class ProductController extends Controller
             'description' => 'required|max:2000',
             'weight' => 'required|integer',
             'unidade_id' => 'exists:unidades,id',
+            'fornecedor_id' => 'exists:fornecedores,id',
         ];
 
         $feedback = [
@@ -44,9 +48,10 @@ class ProductController extends Controller
             'min' => 'O campo :attribute é necessário ter pelo menos :min caracteres.',
             'max' => 'O campo :attribute é necessário ter no máximo :max caracteres.',
             'unidade_id.exists' => 'A unidade informada não existe.',
+            'fornecedor_id.exists' => 'O fornecedor não existe.',
         ];
 
-        Product::create($request->validate($rules, $feedback));
+        Item::create($request->validate($rules, $feedback));
 
         return redirect()->route('product.index');
     }
@@ -63,16 +68,29 @@ class ProductController extends Controller
         return view('app.product.edit', [
             'product' => $product,
             'units' => Unidade::all(),
+            'fornecedores' => Fornecedor::all(),
         ]);
-        // return view('app.product.create', [
-        //     'product' => $product,
-        //     'units' => Unidade::all(),
-        // ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Item $product)
     {
-        $product->update($request->all());
+        $rules = [
+            'name' => 'required|min:2|max:40',
+            'description' => 'required|max:2000',
+            'weight' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id',
+            'fornecedor_id' => 'exists:fornecedores,id',
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é requerido.',
+            'min' => 'O campo :attribute é necessário ter pelo menos :min caracteres.',
+            'max' => 'O campo :attribute é necessário ter no máximo :max caracteres.',
+            'fornecedor_id.exists' => 'O fornecedor não existe.',
+        ];
+
+        $product->update($request->validate($rules, $feedback));
+
         return redirect()->route('product.index');
     }
 

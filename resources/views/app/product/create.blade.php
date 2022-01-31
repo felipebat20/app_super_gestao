@@ -14,7 +14,10 @@
         style="width:30%;"
         class="mx-auto text-left"
       >
-        @component('app.product.components.form_create_edit', ['units' => $units])
+        @component('app.product.components.form_create_edit', [
+          'units' => $units,
+          'fornecedores' => $fornecedores,
+        ])
 
         @endcomponent
           <button
