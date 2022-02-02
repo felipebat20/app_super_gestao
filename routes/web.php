@@ -3,7 +3,6 @@
 use App\Fornecedor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContatoController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -37,7 +36,6 @@ Route::get('/login/{erro?}', [LoginController::class, 'index'])->name('site.logi
 Route::post('/login', [LoginController::class, 'authenticate'])->name('site.login');
 
 Route::middleware('authentication')->prefix('/app')->group(function() {
-    Route::get('/cliente', [CustomerController::class, 'index'])->name('app.cliente');
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'logout'])->name('app.sair');
     Route::prefix('/fornecedor')->group(function () {
@@ -49,7 +47,11 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
         Route::get('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
         Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
     });
+
     Route::resource('product', 'ProductController');
+    Route::resource('cliente', 'ClienteController');
+    Route::resource('pedido', 'PedidoController');
+    Route::resource('pedido-produto', 'PedidoProdutoController');
     Route::resource('product-detail', 'ProductDetailController');
 });
 
