@@ -5,7 +5,7 @@
 @section('container')
   <div class="conteudo-pagina">
     @include('app.product.partials.header', ['title' => 'Listar produtos'])
-{{-- @dd($produtos->toArray()) --}}
+
     <div class="informacao-pagina">
       <div style="width: 90%;" class="mx-auto">
         <table
