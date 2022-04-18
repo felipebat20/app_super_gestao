@@ -14,12 +14,14 @@ class ClienteController extends Controller
 
     public function create()
     {
-        //
+        return view('app.cliente.create');
     }
 
     public function store(Request $request)
     {
-        //
+        Cliente::create($request->all());
+
+        return redirect()->route('cliente.index');
     }
 
     public function show($id)
@@ -37,8 +39,10 @@ class ClienteController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+
+        return redirect()->route('cliente.index')->with('success', 'O cliente foi deletado');
     }
 }

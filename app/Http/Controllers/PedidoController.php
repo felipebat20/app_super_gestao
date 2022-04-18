@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Pedido;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
     public function index()
     {
-        //
+        return view('app.pedido.index', ['pedidos' => Pedido::paginate(10)]);
     }
 
     public function create()

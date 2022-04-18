@@ -180,6 +180,10 @@ button:hover {
     color: #333;
 }
 
+.text-left {
+    text-align: left;
+}
+
 .rodape {
     width: 100%;
 }
