@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PedidoController extends Controller
 {
-    public function index()
+    public function index(Request $request): View
     {
-        return view('app.pedido.index', ['pedidos' => Pedido::paginate(10)]);
+        return view('app.pedido.index', ['pedidos' => Pedido::paginate(10), 'request' => $request->all()]);
     }
 
-    public function create()
+    public function create(): View
     {
-        //
+        return view('app.pedido.create');
     }
 
     public function store(Request $request)

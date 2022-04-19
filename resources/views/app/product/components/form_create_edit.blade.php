@@ -69,4 +69,4 @@
       </option>
     @endforeach
   </select>
-    {{ $errors->first('unidade_id') ?? '' }}
+    {{ $errors->first('fornecedor_id') ?? '' }}

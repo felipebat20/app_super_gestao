@@ -1,10 +1,10 @@
 @extends('app.layouts.master')
 
-@section('title', 'clientes')
+@section('title', 'pedidos')
 
 @section('container')
   <div class="conteudo-pagina">
-    @include('app.cliente.partials.header', ['title' => 'Listar clientes'])
+    @include('app.pedido.partials.header', ['title' => 'Listar pedidos'])
 
     <div class="informacao-pagina">
       <div style="width: 80%;" class="mx-auto">
@@ -13,17 +13,27 @@
           class="table text-left"
         >
           <tbody>
-            @foreach ($clientes as $cliente)
+            @foreach ($pedidos as $pedido)
               <tr>
                 <td width="100%">
                   <div class="row">
                     <div class="col-6 m-0 text-left">
                       <strong>
-                        Nome:
+                        ID do pedido:
                       </strong>
 
                       <p class="d-inline-block">
-                        {{ $cliente->nome }}
+                        {{ $pedido->id }}
+                      </p>
+                    </div>
+
+                    <div class="col-6 m-0 text-left">
+                      <strong>
+                        Cliente:
+                      </strong>
+
+                      <p class="d-inline-block">
+                        {{ $pedido->cliente->nome }}
                       </p>
                     </div>
 
@@ -31,7 +41,7 @@
                       <div class="col-4">
                         <a
                           class="btn btn-info btn-sm d-block text-white"
-                          href="{{ route('cliente.show', $cliente->id) }}"
+                          href="{{ route('pedido.show', $pedido->id) }}"
                         >
                           Ver
                         </a>
@@ -40,7 +50,7 @@
                       <div class="col-4">
                         <a
                           class="btn btn-success btn-sm d-block"
-                          href="{{ route('cliente.edit', $cliente->id) }}"
+                          href="{{ route('pedido.edit', $pedido->id) }}"
                         >
                           Editar
                         </a>
@@ -48,7 +58,7 @@
 
                       <div class="col-4">
                         <form
-                          action="{{ route('cliente.destroy', ['cliente' => $cliente->id]) }}"
+                          action="{{ route('pedido.destroy', ['pedido' => $pedido->id]) }}"
                           method="POST"
                           class="p-0 m-0"
                         >
@@ -69,9 +79,9 @@
             @endforeach
           </tbody>
         </table>
-        {{ $clientes->appends($request)->links() }}
+        {{ $pedidos->appends($request)->links() }}
 
-        Exibindo {{ $clientes->count() }} clientes de {{ $clientes->total() }} (de {{ $clientes->firstItem() }} a {{ $clientes->lastItem() }})
+        Exibindo {{ $pedidos->count() }} pedidos de {{ $pedidos->total() }} (de {{ $pedidos->firstItem() }} a {{ $pedidos->lastItem() }})
       </div>
     </div>
   </div>
