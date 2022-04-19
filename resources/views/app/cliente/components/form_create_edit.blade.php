@@ -12,17 +12,11 @@
 >
   @csrf
 @endif
-<select
-name="cliente_id"
-class="borda-preta"
->
-<option value="">
-  Selecione um cliente
-</option>
-
-@foreach ($clientes as $cliente)
-  <option value="{{ $cliente->id }}" {{ ($product->cliente_id ?? old('cliente_id')) == $cliente->id ? 'selected' : '' }}>
-    {{ $cliente->name }}
-  </option>
-@endforeach
-</select>
+  <input
+    type="text"
+    name="nome"
+    class="borda-preta"
+    placeholder="Nome do cliente"
+    value="{{ $cliente->name ?? old('name') }}"
+  >
+    {{ $errors->first('name') ?? '' }}
