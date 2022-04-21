@@ -6,7 +6,7 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -56,8 +56,8 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
         'product-detail' => 'ProductDetailController',
     ]);
 
-    Route::get('pedido-produto/create/{pedido}', [PedidoController::class, 'create'])->name('pedido-produto.create');
-    Route::post('pedido-produto/create/{pedido}', [PedidoController::class, 'store'])->name('pedido-produto.store');
+    Route::get('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+    Route::post('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
