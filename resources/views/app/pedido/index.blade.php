@@ -17,7 +17,7 @@
               <tr>
                 <td width="100%">
                   <div class="row">
-                    <div class="col-6 m-0 text-left">
+                    <div class="col-8 m-0 text-left">
                       <strong>
                         ID do pedido:
                       </strong>
@@ -27,7 +27,29 @@
                       </p>
                     </div>
 
-                    <div class="col-6 m-0 text-left">
+                    <div class="col-4 row">
+                      <div class="col-6">
+                        <a
+                          class="btn btn-info btn-sm d-block text-white"
+                          href="{{ route('pedido.show', $pedido->id) }}"
+                        >
+                          Ver
+                        </a>
+                      </div>
+
+                      <div class="col-6">
+                        <a
+                          class="btn btn-secondary text-light btn-sm d-block"
+                          href="{{ route('pedido-produto.create', $pedido->id) }}"
+                        >
+                          Adicionar produto
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-8 m-0 text-left">
                       <strong>
                         Cliente:
                       </strong>
@@ -37,17 +59,8 @@
                       </p>
                     </div>
 
-                    <div class="col-6 row">
-                      <div class="col-4">
-                        <a
-                          class="btn btn-info btn-sm d-block text-white"
-                          href="{{ route('pedido.show', $pedido->id) }}"
-                        >
-                          Ver
-                        </a>
-                      </div>
-
-                      <div class="col-4">
+                    <div class="col-4 row">
+                      <div class="col-6">
                         <a
                           class="btn btn-success btn-sm d-block"
                           href="{{ route('pedido.edit', $pedido->id) }}"
@@ -56,7 +69,7 @@
                         </a>
                       </div>
 
-                      <div class="col-4">
+                      <div class="col-6">
                         <form
                           action="{{ route('pedido.destroy', ['pedido' => $pedido->id]) }}"
                           method="POST"

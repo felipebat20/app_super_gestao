@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -48,11 +49,15 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
         Route::post('/create', [FornecedorController::class, 'create'])->name('app.fornecedor.create');
     });
 
-    Route::resource('product', 'ProductController');
-    Route::resource('cliente', 'ClienteController');
-    Route::resource('pedido', 'PedidoController');
-    Route::resource('pedido-produto', 'PedidoProdutoController');
-    Route::resource('product-detail', 'ProductDetailController');
+    Route::resources([
+        'product' => 'ProductController',
+        'cliente' => 'ClienteController',
+        'pedido' =>'PedidoController',
+        'product-detail' => 'ProductDetailController',
+    ]);
+
+    Route::get('pedido-produto/create/{pedido}', [PedidoController::class, 'create'])->name('pedido-produto.create');
+    Route::post('pedido-produto/create/{pedido}', [PedidoController::class, 'store'])->name('pedido-produto.store');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
@@ -64,16 +69,3 @@ Route::get('rota2', function() {
 Route::fallback(function() {
     echo 'A rota que você acessou infelizmente não existe mais. A menos que tenha uma máquina do tempo, aconselho que volte a <a href="'.route('site.index').'">tela inicial.</a>';
 });
-
-// Route::redirect('/rota2', '/rota1');
-
-
-
-// Route::get('/contato/{nome}/{categoria_id}',
-//     function(
-//         string $nome = 'Desconhecido',
-//         int $categoria_id = 1
-//     ) {
-//         echo "Estamos aqui: $nome - $categoria_id ";
-// }
-// )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
