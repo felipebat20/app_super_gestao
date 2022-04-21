@@ -1,13 +1,13 @@
 @extends('app.layouts.master')
 
-@section('title', 'cliente')
+@section('title', 'pedido')
 
 @section('container')
   <div class="conteudo-pagina">
-    @if (isset($cliente->id))
-      @include('app.cliente.partials.header', ['title' => 'Editar cliente'])
+    @if (isset($pedido->id))
+      @include('app.pedido.partials.header', ['title' => 'Editar pedido'])
     @else
-      @include('app.cliente.partials.header', ['title' => 'Criar cliente'])
+      @include('app.pedido.partials.header', ['title' => 'Criar pedido'])
     @endif
 
     <div class="informacao-pagina">
@@ -15,7 +15,7 @@
         style="width:30%;"
         class="mx-auto text-left"
       >
-        @component('app.cliente.components.form_create_edit')
+        @component('app.pedido.components.form_create_edit', ['clientes' => $clientes])
 
         @endcomponent
           <button

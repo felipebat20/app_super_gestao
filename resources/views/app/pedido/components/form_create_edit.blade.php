@@ -4,6 +4,7 @@
     method="post"
   >
     @csrf
+
     @method('PUT')
 @else
   <form
@@ -12,11 +13,22 @@
   >
     @csrf
 @endif
-    <input
-      type="text"
-      name="nome"
+    <select
+      name="cliente_id"
       class="borda-preta"
-      placeholder="Nome do cliente"
-      value="{{ $pedido->name ?? old('name') }}"
     >
-      {{ $errors->first('name') ?? '' }}
+      <option value="">
+          Selecione o cliente
+      </option>
+
+      @foreach ($clientes as $cliente)
+          <option
+            value="{{ $cliente->id }}"
+            {{ ($pedido->cliente_id ?? old('cliente_id')) == $cliente->id ? 'selected' : '' }}
+          >
+            {{ $cliente->nome }}
+          </option>
+      @endforeach
+  </select>
+{{ $errors->first('cliente_id') ?? '' }}
+
